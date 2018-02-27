@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="2" time="40.802395">
+<testcase classname="Free CRM Login Feature" name="Free CRM Login Test Scenario" time="21.029872">
+<system-out><![CDATA[Given User is already on login page.........................................passed
+When Title of login page is Free CRM........................................passed
+Then User enters "naveenk" and "test@123"...................................passed
+Then User click on login button.............................................passed
+Then User is on home page...................................................passed
+Then User mouse over on contact tab.........................................passed
+Then User click on new contact link.........................................passed
+Then User enters the contact details "Tom" and "peter" and "Manager"........passed
+Then User click on save button..............................................passed
+Then User close the browser.................................................passed
+]]></system-out>
+</testcase>
+<testcase classname="Free CRM Login Feature" name="Free CRM Login Test Scenario 2" time="19.772523">
+<system-out><![CDATA[Given User is already on login page.........................................passed
+When Title of login page is Free CRM........................................passed
+Then User enters "naveenk" and "test@123"...................................passed
+Then User click on login button.............................................passed
+Then User is on home page...................................................passed
+Then User mouse over on contact tab.........................................passed
+Then User click on new contact link.........................................passed
+Then User enters the contact details "David" and "nack" and "QA"............passed
+Then User click on save button..............................................passed
+Then User close the browser.................................................passed
+]]></system-out>
+</testcase>
+</testsuite>
