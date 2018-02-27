@@ -1,5 +1,6 @@
-/*package stepDefinition;
+package stepDefinition;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -9,14 +10,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
+import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import junit.framework.Assert;
 
-public class LoginStepDefinition {
+public class DealStepDefinition {
 	
-	WebDriver driver;
+WebDriver driver;
 	
 	@Given("^User is already on login page$")
 	public void user_is_already_on_login_page()
@@ -36,11 +38,12 @@ public class LoginStepDefinition {
 		System.out.println(title);
 		Assert.assertEquals("#1 Free CRM for Any Business: Online Customer Relationship Software", title);
 	}
-	@Then("^User enters \"(.*)\" and \"(.*)\"$")
-	public void user_enters_username_and_password(String username,String password) 
+	@Then("^User enters username and password$")
+	public void user_enters_username_and_password(DataTable credentials) 
 	{
-		driver.findElement(By.name("username")).sendKeys(username);
-		driver.findElement(By.name("password")).sendKeys(password);
+		List<List<String>> data = credentials.raw();
+		driver.findElement(By.name("username")).sendKeys(data.get(0).get(0));
+		driver.findElement(By.name("password")).sendKeys(data.get(0).get(1));
 		
 	}
 
@@ -60,26 +63,29 @@ public class LoginStepDefinition {
 	    Assert.assertEquals("CRMPRO", title);
 	}
 	
-	@Then("^User mouse over on contact tab$")
-	public void user_mouse_over_on_contact_tab() 
+	@Then("^User mouse over on deals tab$")
+	public void user_mouse_over_on_deals_tab() 
 	{
 		driver.switchTo().frame("mainpanel");
 		Actions action = new Actions(driver);
-		action.moveToElement(driver.findElement(By.xpath("//a[contains(text(),'Contacts')]"))).build().perform();
+		action.moveToElement(driver.findElement(By.xpath("//a[contains(text(),'Deals')]"))).build().perform();
 	}
 
-	@Then("^User click on new contact link$")
-	public void user_click_on_new_contact_link() 
+	@Then("^User click on new deals link$")
+	public void user_click_on_new_deals_link() 
 	{
-	    driver.findElement(By.xpath("//a[contains(text(),'New Contact')]")).click();
+	    driver.findElement(By.xpath("//a[contains(text(),'New Deal')]")).click();
 	}
 
-	@Then("^User enters the contact details \"([^\"]*)\" and \"([^\"]*)\" and \"([^\"]*)\"$")
-	public void user_enters_the_contact_details_and_and(String arg1, String arg2, String arg3)
+	@Then("^User enters the deals details title and amount and probability and commission")
+	public void user_enters_the_deals_details_and_and(DataTable dealData)
 	{
-	    driver.findElement(By.id("first_name")).sendKeys(arg1);
-	    driver.findElement(By.id("surname")).sendKeys(arg2);
-	    driver.findElement(By.id("company_position")).sendKeys(arg3);
+		List<List<String>> dealValues = dealData.raw();
+	    driver.findElement(By.id("title")).sendKeys(dealValues.get(0).get(0));
+	    driver.findElement(By.id("amount")).sendKeys(dealValues.get(0).get(1));
+	    driver.findElement(By.id("probability")).sendKeys(dealValues.get(0).get(2));
+	    driver.findElement(By.id("commission")).sendKeys(dealValues.get(0).get(3));
+	    
 	}
 
 	@Then("^User click on save button$")
@@ -94,6 +100,5 @@ public class LoginStepDefinition {
 	{
 		driver.quit();
 	}
-	
+
 }
-*/
